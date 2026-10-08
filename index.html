@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سرقة بيض Wiki - Steal an Egg Wiki</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Tahoma', 'Segoe UI', sans-serif;
+    background: #0f0f1a;
+    color: #e0e0e0;
+    line-height: 1.8;
+  }
+
+  header {
+    background: linear-gradient(135deg, #ffb300, #ff6a00, #c0392b);
+    padding: 50px 20px;
+    text-align: center;
+    border-bottom: 4px solid #ffd700;
+  }
+  header h1 {
+    font-size: 42px;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255,215,0,0.8), 0 3px 8px #000;
+    letter-spacing: 2px;
+  }
+  header p {
+    color: #fff8dc;
+    margin-top: 10px;
+    font-size: 17px;
+    text-shadow: 0 2px 6px #000;
+  }
+
+  nav {
+    background: #1a1a2e;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid #ffb300;
+  }
+  nav a {
+    color: #ccc;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px 14px;
+    border-radius: 18px;
+    transition: 0.3s;
+  }
+  nav a:hover {
+    background: #ffb300;
+    color: #000;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+
+  .card {
+    background: rgba(26,26,46,0.95);
+    border-right: 5px solid #ffb300;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.5);
+    transition: 0.3s;
+  }
+  .card:hover {
+    border-right-color: #ff6a00;
+    transform: translateY(-3px);
+  }
+  .card h2 {
+    color: #ffd700;
+    margin-bottom: 15px;
+    font-size: 24px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+  }
+  .card h3 {
+    color: #ffb300;
+    margin: 18px 0 10px;
+    font-size: 18px;
+  }
+  .card p, .card li {
+    color: #ccc;
+    font-size: 15px;
+  }
+  .card ul { padding-right: 20px; }
+  .card li { margin-bottom: 6px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 14px;
+    overflow-x: auto;
+    display: block;
+  }
+  table thead {
+    background: #2a2a45;
+  }
+  table th {
+    color: #ffd700;
+    padding: 12px 10px;
+    text-align: right;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+  table td {
+    padding: 10px;
+    border-bottom: 1px solid #2a2a45;
+    color: #ddd;
+    white-space: nowrap;
+  }
+  table tr:hover td {
+    background: rgba(255,179,0,0.08);
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    margin-right: 5px;
+  }
+  .b-common { background: #666; }
+  .b-uncommon { background: #27ae60; }
+  .b-rare { background: #2980b9; }
+  .b-epic { background: #8e44ad; }
+  .b-legendary { background: #d35400; }
+  .b-mythic { background: #c0392b; }
+  .b-secret { background: #e67e22; }
+  .b-cosmic { background: #9b59b6; }
+  .b-eternal { background: #16a085; }
+  .b-divine { background: linear-gradient(90deg, #f39c12, #e74c3c); }
+
+  .note {
+    background: rgba(255,179,0,0.1);
+    border-right: 4px solid #ffb300;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-size: 14px;
+    color: #ffd700;
+  }
+
+  .source {
+    font-size: 12px;
+    color: #666;
+    margin-top: 8px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #000;
+    color: #666;
+    border-top: 3px solid #ffb300;
+    margin-top: 40px;
+    font-size: 14px;
+  }
+  footer .credit {
+    color: #ffd700;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  footer .credit span {
+    color: #ff6a00;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🥚 سرقة بيض Wiki</h1>
+  <p>كل ما تحتاج معرفته عن Steal an Egg في Roblox</p>
+</header>
+
+<nav>
+  <a href="#overview">نظرة عامة</a>
+  <a href="#biomes">المناطق</a>
+  <a href="#speed">متطلبات السرعة</a>
+  <a href="#pets">الحيوانات الأليفة</a>
+  <a href="#mechanics">آليات اللعب</a>
+</nav>
+
+<div class="container">
+
+  <!-- نظرة عامة -->
+  <div class="card" id="overview">
+    <h2>📖 نظرة عامة</h2>
+    <p>
+      <strong>Steal an Egg</strong> هي لعبة صغيرة (Mini-game) داخل منصة Roblox. الهدف الأساسي هو التسلل إلى مناطق مختلفة (Biomes)، سرقة البيض من أعشاشها، والهروب قبل أن يمسكك الحارس المسؤول عن المنطقة [citation:1][citation:3].
+    </p>
+    <p>
+      كل بيضة تحتوي على حيوان أليف (Pet) يمكنك تفقيسه ليجلب لك أرباحاً تلقائية بالعملة داخل اللعبة. كلما تقدمت في المناطق، زادت ندرة الحيوانات وقيمة أرباحها [citation:8][citation:9].
+    </p>
+    <div class="note">
+      ⚠️ تنبيه: متطلبات السرعة المذكورة هي الحد الأدنى فقط. ينصح الخبراء بمضاعفة هذه القيم لتضمن هروباً آمناً، خاصة عند حمل بيض ثقيل [citation:5][citation:13].
+    </div>
+  </div>
+
+  <!-- المناطق -->
+  <div class="card" id="biomes">
+    <h2>🗺️ مناطق الخريطة (Biomes)</h2>
+    <p>تحتوي اللعبة على 12 منطقة رئيسية مرتبة بالترتيب التالي [citation:13][citation:19]:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>المنطقة</th>
+          <th>الحارس</th>
+          <th>أدنى سرعة مطلوبة</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>الغابة (Forest)</td><td>🐔 دجاجة</td><td>لا يوجد</td></tr>
+        <tr><td>2</td><td>البحيرة (Lake)</td><td>🦢 بجعة</td><td>900</td></tr>
+        <tr><td>3</td><td>الصحراء (Desert)</td><td>🦂 عقرب</td><td>10K</td></tr>
+        <tr><td>4</td><td>الأدغال (Jungle)</td><td>🐯 نمر</td><td>40K</td></tr>
+        <tr><td>5</td><td>الثلج (Snow)</td><td>❄️ يتي (Yeti)</td><td>170K</td></tr>
+        <tr><td>6</td><td>البركان (Volcano)</td><td>🔥 سيربيروس</td><td>700K</td></tr>
+        <tr><td>7</td><td>محيط الهاوية (Abyss Ocean)</td><td>🐋 حوت بيلوغا</td><td>2.5M</td></tr>
+        <tr><td>8</td><td>ما قبل التاريخ (Prehistoric)</td><td>🦖 تيرانوصور</td><td>18M*</td></tr>
+        <tr><td>9</td><td>الكون (Cosmic)</td><td>💀 زعيم الهيكل الكوني</td><td>700M</td></tr>
+        <tr><td>10</td><td>زهر الكرز (Cherry Blossom)</td><td>🦊 أوني تايغر</td><td>2.5B</td></tr>
+        <tr><td>11</td><td>معبد التيتان (Titan Temple)</td><td>🦍 ملك الغوريلا</td><td>7B</td></tr>
+        <tr><td>12</td><td>الملائكة والشياطين</td><td>😇/😈 ملاك أو شيطان</td><td>20B</td></tr>
+      </tbody>
+    </table>
+    <p class="source">* تختلف المصادر بين 17M و 18M لمنطقة ما قبل التاريخ. القيمة المذكورة (18M) أكثر أماناً [citation:5].</p>
+    <p class="source">المصادر: Showgamer [citation:1], Lolga [citation:5], GameBoost [citation:13], GAMES.GG [citation:19].</p>
+  </div>
+
+  <!-- آليات السرعة -->
+  <div class="card" id="speed">
+    <h2>⚡ آليات السرعة والهروب</h2>
+
+    <h3>كيف تعمل السرعة؟</h3>
+    <ul>
+      <li>يمكنك دخول أي منطقة بأي سرعة - لا يوجد حاجز يمنعك [citation:5].</li>
+      <li>السرعة تصبح حرجة <strong>فقط عندما تلتقط بيضة</strong> وتبدأ في الهروب [citation:9].</li>
+      <li>إذا أمسكك الحارس، يتم رميك خارج المنطقة وتفقد البيضة، ويمكن للاعبين الآخرين سرقتها [citation:13].</li>
+    </ul>
+
+    <h3>عوامل تؤثر على الهروب</h3>
+    <ul>
+      <li><strong>وزن البيضة:</strong> البيض الكبير والضخم يبطئ حركتك بشكل ملحوظ [citation:5][citation:9].</li>
+      <li><strong>المسار:</strong> الجري في خطوط متعرجة يقلل من سرعتك الفعلية [citation:13].</li>
+      <li><strong>منافسة اللاعبين:</strong> قد يكون اللاعبون الآخرون أخطر من الحارس نفسه [citation:11].</li>
+    </ul>
+
+    <div class="note">
+      💡 نصيحة: من الأفضل أن تصل إلى ضعف السرعة المطلوبة قبل محاولة سرقة بيض ثقيل [citation:9][citation:15].
+    </div>
+  </div>
+
+  <!-- الحيوانات الأليفة -->
+  <div class="card" id="pets">
+    <h2>🐾 الحيوانات الأليفة حسب المنطقة</h2>
+
+    <h3>🌲 الغابة (Forest)</h3>
+    <table>
+      <thead><tr><th>الحيوان</th><th>الندرة</th><th>الدخل/ثانية</th></tr></thead>
+      <tbody>
+        <tr><td>🐔 دجاجة</td><td><span class="badge b-common">شائع</span></td><td>$1</td></tr>
+        <tr><td>🐕 كلب</td><td><span class="badge b-common">شائع</span></td><td>$2</td></tr>
+        <tr><td>🐦 طائر</td><td><span class="badge b-uncommon">غير شائع</span></td><td>$8</td></tr>
+        <tr><td>🦉 بومة</td><td><span class="badge b-rare">نادر</span></td><td>$35</td></tr>
+        <tr><td>🦝 راكون</td><td><span class="badge b-rare">نادر</span></td><td>$45</td></tr>
+        <tr><td>🦊 ثعلب</td><td><span class="badge b-epic">ملحمي</span></td><td>$180</td></tr>
+        <tr><td>🐻 دب</td><td><span class="badge b-epic">ملحمي</span></td><td>$240</td></tr>
+        <tr><td>🥜 Brr Brr Patapim</td><td><span class="badge b-legendary">أسطوري</span></td><td>$1,800</td></tr>
+      </tbody>
+    </table>
+    <p class="source">المصدر: Showgamer [citation:1], Critical Hits [citation:8].</p>
+
+    <h3>🏞️ البحيرة (Lake)</h3>
+    <table>
+      <thead><tr><th>الحيوان</th><th>الندرة</th><th>الدخل/ثانية</th></tr></thead>
+      <tbody>
+        <tr><td>🐸 ضفدع</td><td><span class="badge b-common">شائع</span></td><td>$3</td></tr>
+        <tr><td>🦆 بطة صغيرة</td><td><span class="badge b-common">شائع</span></td><td>$4</td></tr>
+        <tr><td>🐟 سمكة قط</td><td><span class="badge b-uncommon">غير شائع</span></td><td>$12</td></tr>
+        <tr><td>🐢 سلحفاة</td><td><span class="badge b-rare">نادر</span></td><td>$60</td></tr>
+        <tr><td>🦎 Trulimero Trulicina</td><td><span class="badge b-epic">ملحمي</span></td><td>$260</td></tr>
+        <tr><td>🦢 بجعة</td><td><span class="badge b-epic">ملحمي</span></td><td>$320</td></tr>
+        <tr><td>🐉 أكسولوتل</td><td><span class="badge b-legendary">أسطوري</span></td><td>$2,800</td></tr>
+        <tr><td>🌌 ليفياثان</td><td><span class="badge b-cosmic">كوني</span></td><td>$220,000</td></tr>
+      </tbody>
+    </table>
+    <p class="source">المصدر: Showgamer [citation:1], Critical Hits [citation:8].</p>
+
+    <h3>🏜️ الصحراء (Desert)</h3>
+    <table>
+      <thead><tr><th>الحيوان</th><th>الندرة</th><th>الدخل/ثانية</th></tr></thead>
+      <tbody>
+        <tr><td>🐭 جربوع</td><td><span class="badge b-common">شائع</span></td><td>$6</td></tr>
+        <tr><td>🦊 فينيك</td><td><span class="badge b-uncommon">غير شائع</span></td><td>$18</td></tr>
+        <tr><td>🐪 جمل</td><td><span class="badge b-rare">نادر</span></td><td>$75</td></tr>
+        <tr><td>🐍 Tob Tobi Tob Tob</td><td><span class="badge b-epic">ملحمي</span></td><td>$325</td></tr>
+        <tr><td>🐍 ثعبان</td><td><span class="badge b-legendary">أسطوري</span></td><td>$3,600</td></tr>
+        <tr><td>🕷️ عنكبوت الرمال</td><td><span class="badge b-mythic">أسطوري</span></td><td>$16,000</td></tr>
+        <tr><td>🦂 عقرب</td><td><span class="badge b-mythic">أسطوري</span></td><td>$18,500</td></tr>
+        <tr><td>👑 أبو الهول الملكي</td><td><span class="badge b-cosmic">كوني</span></td><td>$280,000</td></tr>
+      </tbody>
+    </table>
+    <p class="source">المصدر: Critical Hits [citation:8], Wotpack.ru [citation:4].</p>
+
+    <h3>🌴 الأدغال (Jungle)</h3>
+    <table>
+      <thead><tr><th>الحيوان</th><th>الندرة</th><th>الدخل/ثانية</th></tr></thead>
+      <tbody>
+        <tr><td>🐦 طوقان</td><td><span class="badge b-rare">نادر</span></td><td>$110</td></tr>
+        <tr><td>🐵 شمبانزي</td><td><span class="badge b-rare">نادر</span></td><td>$90</td></tr>
+        <tr><td>🐊 تمساح</td><td><span class="badge b-epic">ملحمي</span></td><td>$420</td></tr>
+        <tr><td>🦍 غوريلا</td><td><span class="badge b-legendary">أسطوري</span></td><td>$4,800</td></tr>
+        <tr><td>🍍 Orangutini Ananassini</td><td><span class="badge b-legendary">أسطوري</span></td><td>$5,500</td></tr>
+        <tr><td>🕷️ عنكبوت</td><td><span class="badge b-mythic">أسطوري</span></td><td>$22,000</td></tr>
+        <tr><td>🐯 نمر</td><td><span class="badge b-mythic">أسطوري</span></td><td>$28,000</td></tr>
+        <tr><td>👑 ثعبان الملك</td><td><span class="badge b-secret">سري</span></td><td>$3,500,000</td></tr>
+      </tbody>
+    </table>
+    <p class="source">المصدر: Critical Hits [citation:8], GAMES.GG [citation:19].</p>
+
+    <h3>❄️ الثلج (Snow)</h3>
+    <table>
+      <thead><tr><th>الحيوان</th><th>الندرة</th><th>الدخل/ثانية</th></tr></thead>
+      <tbody>
+        <tr><td>🐧 بطريق</td><td><span class="badge b-rare">نادر</span></td><td>$140</td></tr>
+        <tr><td>🦭 فقمة</td><td><span class="badge b-epic">ملحمي</span></td><td>$600</td></tr>
+        <tr><td>🐻‍❄️ دب قطبي</td><td><span class="badge b-legendary">أسطوري</span></td><td>$7,000</td></tr>
+        <tr><td>🐯 نمر سيفي الأنياب</td><td><span class="badge b-mythic">أسطوري</span></td><td>$35,000</td></tr>
+        <tr><td>🦣 ماموث</td><td><span class="badge b-mythic">أسطوري</span></td><td>$42,000</td></tr>
+        <tr><td>👑 ماموث ملكي</td><td><span class="badge b-cosmic">كوني</span></td><td>$400,000</td></tr>
+        <tr><td>❄️ يتي</td><td><span class="badge b-secret">سري</span></td><td>$5,000,000</td></tr>
+        <tr><td>🐉 تنين الجليد</td><td><span class="badge b-eternal">أبدي</span></td><td>$65,000,000</td></tr>
+      </tbody>
+    </table>
+    <p class="source">المصدر: Wotpack.ru [citation:4], GAMES.GG [citation:19].</p>
+
+    <h3>🌋 البركان (Volcano)</h3>
+    <table>
+      <thead><tr><th>الحيوان</th><th>الندرة</th><th>الدخل/ثانية</th></tr></thead>
+      <tbody>
+        <tr><td>🦎 سحلية الحمم</td><td><span class="badge b-epic">ملحمي</span></td><td>$850</td></tr>
+        <tr><td>🐂 ثور ملتهب</td><td><span class="badge b-legendary">أسطوري</span></td><td>$9,500</td></tr>
+        <tr><td>🦎 إغوانا الحمم</td><td><span class="badge b-legendary">أسطوري</span></td><td>$11,000</td></tr>
+        <tr><td>🥶 Chillin Chilli</td><td><span class="badge b-mythic">أسطوري</span></td><td>$55,000</td></tr>
+        <tr><td>🔥 سيربيروس</td><td><span class="badge b-secret">سري</span></td><td>$8,000,000</td></tr>
+        <tr><td>🔥 فينيكس</td><td><span class="badge b-eternal">أبدي</span></td><td>$85,000,000</td></tr>
+        <tr><td>🐉 تنين الحمم</td><td><span class="badge b-eternal">أبدي</span></td><td>$100,000,000</td></tr>
+      </tbody>
+    </table>
+    <p class="source">المصدر: Critical Hits [citation:8], GAMES.GG [citation:19].</p>
+
+    <h3>🌊 محيط الهاوية (Abyss Ocean)</h3>
+    <table>
+      <thead><tr><th>الحيوان</th><th>الندرة</th><th>الدخل/ثانية</th></tr></thead>
+      <tbody>
+        <tr><td>🐠 سمكة ببغاء</td><td><span class="badge b-rare">نادر</span></td><td>$220</td></tr>
+        <tr><td>🐟 سمكة سيف</td><td><span class="badge b-epic">ملحمي</span></td><td>$1,100</td></tr>
+        <tr><td>🦈 قرش</td><td><span class="badge b-legendary">أسطوري</span></td><td>$15,000</td></tr>
+        <tr><td>🐋 أوركا</td><td><span class="badge b-mythic">أسطوري</span></td><td>$80,000</td></tr>
+        <tr><td>🐋 قرش الحوت</td><td><span class="badge b-cosmic">كوني</span></td><td>$710,000</td></tr>
+        <tr><td>🐋 بيلوغا</td><td><span class="badge b-cosmic">كوني</span></td><td>$850,000</td></tr>
+        <tr><td>🦑 كراكن</td><td><span class="badge b-secret">سري</span></td><td>$15,000,000</td></tr>
+        <tr><td>🐋 El Maha</td><td><span class="badge b-eternal">أبدي</span></td><td>$130,000,000</td></tr>
+      </tbody>
+    </table>
+    <p class="source">المصدر: Critical Hits [citation:8], Wotpack.ru [citation:4].</p>
+
+    <h3>🦕 ما قبل التاريخ (Prehistoric)</h3>
+    <table>
+      <thead><tr><th>الحيوان</th><th>الندرة</th><th>الدخل/ثانية</th></tr></thead>
+      <tbody>
+        <tr><td>🦅 تيروداكتيل</td><td><span class="badge b-epic">ملحمي</span></td><td>—</td></tr>
+        <tr><td>🦕 أنكيلوصور</td><td><span class="badge b-legendary">أسطوري</span></td><td>—</td></tr>
+        <tr><td>🦏 تريسيراتوبس</td><td><span class="badge b-legendary">أسطوري</span></td><td>—</td></tr>
+        <tr><td>🦖 ترالاليدون</td><td><span class="badge b-secret">سري</span></td><td>$32,000,000</td></tr>
+        <tr><td>🦖 تيرانوصور</td><td><span class="badge b-secret">سري</span></td><td>$25,000,000</td></tr>
+        <tr><td>🦎 موساصور</td><td><span class="badge b-eternal">أبدي</span></td><td>$180,000,000</td></tr>
+      </tbody>
+    </table>
+    <p class="source">المصدر: Wotpack.ru [citation:4].</p>
+
+    <h3>🌌 الكون (Cosmic)</h3>
+    <table>
+      <thead><tr><th>الحيوان</th><th>الندرة</th><th>الدخل/ثانية</th></tr></thead>
+      <tbody>
+        <tr><td>🐉 تنين الفضاء</td><td><span class="badge b-secret">سري</span></td><td>$60,000,000</td></tr>
+        <tr><td>💀 زعيم الهيكل الكوني</td><td><span class="badge b-secret">سري</span></td><td>$45,000,000</td></tr>
+        <tr><td>🌙 تنين القمر الأبدي</td><td><span class="badge b-eternal">أبدي</span></td><td>$250,000,000</td></tr>
+        <tr><td>🦄 وحيد القرن الإلهي</td><td><span class="badge b-divine">إلهي</span></td><td>$1,000,000,000+</td></tr>
+      </tbody>
+    </table>
+    <p class="source">المصدر: Wotpack.ru [citation:4].</p>
+
+    <div class="note">
+      📌 <strong>مكافأة الإكمال:</strong> جمع كل الـ 8 حيوانات في أي منطقة منتظمة يمنحك سرعة ومالاً و"Bat Skin" حصرياً. استثناءات: زهر الكرز يمنح Katana، ومعبد التيتان يمنح Titan Axe [citation:9][citation:12].
+    </div>
+  </div>
+
+  <!-- آليات إضافية -->
+  <div class="card" id="mechanics">
+    <h2>🔧 آليات إضافية</h2>
+
+    <h3>الحصول على السرعة</h3>
+    <ul>
+      <li><strong>جهاز المشي (Treadmill):</strong> المصدر الرئيسي لتوليد السرعة. الوقوف عليه يولّد سرعة بشكل مستمر، والترقية النقدية تزيد من معدل التوليد [citation:15].</li>
+      <li><strong>الحيوانات الأليفة:</strong> كل حيوان يمنحك سرعة إضافية عند تفقيسه لأول مرة [citation:1].</li>
+      <li><strong>Robux:</strong> يمكن شراء حزم سرعة تتراوح من +150K إلى +1B [citation:13].</li>
+    </ul>
+
+    <h3>منطقة الملائكة والشياطين</h3>
+    <ul>
+      <li>المنطقة الوحيدة التي <strong>تتبدل</strong> بين نمطين: نهاري (ملائكة) وليلي (شياطين) [citation:13].</li>
+      <li>كل نمط يحتوي على 8 حيوانات مختلفة (16 إجمالاً في الفهرس المشترك) [citation:12][citation:16].</li>
+      <li>توجد نسخة نادرة "Merged" تدمج الجانبين مع مكافأة حظ إضافية [citation:13].</li>
+      <li>يمكن دمج حيوانات من الفئتين لإنشاء حيوانات فيوجن خاصة (Pegasus + Skeleton Horse = ?) [citation:12][citation:16].</li>
+    </ul>
+
+    <h3>حيوانات خارج نظام البيض</h3>
+    <p>بعض الحيوانات لا تأتي من البيض العادي، بل من:</p>
+    <ul>
+      <li>فعاليات محدودة الوقت (Events) [citation:12]</li>
+      <li>آلات Gacha [citation:12]</li>
+      <li>شراء مباشر من المتجر [citation:12]</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <p>🥚 Steal an Egg Wiki - صفحة معلوماتية</p>
+  <p>جميع البيانات موثقة من مصادر متعددة بتاريخ أكتوبر 2026</p>
+  <p class="credit">جميع الحقوق محفوظة © <span>ilovenoby7</span></p>
+</footer>
+
+</body>
+</html>
